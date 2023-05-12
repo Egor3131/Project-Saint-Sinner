@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    [SerializeField] DemonsFactory demonsFactory;
 
-
+    private void Start()
+    {
+        demonsFactory.SpawnDemon(DemonType.Minotaur);
+    }
 }

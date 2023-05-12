@@ -60,6 +60,9 @@ TagManager:
   - name: HandInFront
     uniqueID: 2913291219
     locked: 0
+  - name: Enemy
+    uniqueID: 3438155397
+    locked: 0
   - name: Bullet
     uniqueID: 828454647
     locked: 0
