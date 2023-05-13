@@ -21,9 +21,14 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Wall"))
+        if (other.CompareTag("Wall") || other.CompareTag("Enemy"))
         {
             Destroy(gameObject);
         }
+        if (other.TryGetComponent<HealthController>(out HealthController health))
+        {
+            health.ReduceHealth(10);
+        }
+
     }
 }
