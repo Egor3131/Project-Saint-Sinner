@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] Camera currentCamera;
     [SerializeField] float speed = 5f;
+    [SerializeField] LayerMask layer;
     private Vector3 mousePos;
     public Vector2 rawInput;
     private Rigidbody rb;
@@ -95,10 +96,15 @@ public class PlayerController : MonoBehaviour
 
     private void RotateGun()
     {
-        mousePos = Input.mousePosition;
-        mousePos = currentCamera.ScreenToWorldPoint(mousePos);
-        mousePos.y = 1.8f;
-        weaponController.GunPointer = new Vector3(mousePos.x, mousePos.y, mousePos.z + 10);
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit rayHit, float.MaxValue, layer))
+        {
+            weaponController.GunPointer = new Vector3(rayHit.point.x, weaponController.gunBarrel.position.y, rayHit.point.z);
+        }
     }
+
+
+
 
 }

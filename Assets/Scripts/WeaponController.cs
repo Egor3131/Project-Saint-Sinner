@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
-    [SerializeField] Transform gunBarrel;
+    [SerializeField] public Transform gunBarrel;
     [SerializeField] GameObject bulletPrefab;
     public Vector3 GunPointer { get; set; }
     public Vector3 ObjectScale { get; set; }
@@ -23,14 +23,17 @@ public class WeaponController : MonoBehaviour
     {
         SetSortingLayer();
         CalculateAngle();
+        Debug.Log(GunPointer);
+
     }
 
 
     private void CalculateAngle()
     {
-        direction = (GunPointer - new Vector3(gunBarrel.position.x, 1.8f, gunBarrel.position.z)).normalized;
-        angle = Mathf.Atan2(direction.z, direction.x) * Mathf.Rad2Deg; ;
-        transform.eulerAngles = new Vector3(0, 0, angle);
+        direction = (GunPointer - gunBarrel.position).normalized;
+        angle = Mathf.Atan2(direction.z, direction.x) * Mathf.Rad2Deg;
+
+        transform.rotation = Quaternion.Euler(90, 0, angle);
     }
 
 
@@ -73,12 +76,19 @@ public class WeaponController : MonoBehaviour
         Debug.Log("Shooting");
     }
 
+
     private void FireBullet()
     {
-        GameObject firedBullet = Instantiate(bulletPrefab, new Vector3(gunBarrel.position.x, 1.8f, gunBarrel.position.z), Quaternion.identity);
+        GameObject firedBullet = Instantiate(bulletPrefab, new Vector3(gunBarrel.position.x, gunBarrel.position.y, gunBarrel.position.z), bulletPrefab.transform.rotation);
         Bullet bullet = firedBullet.GetComponent<Bullet>();
-        Transform bulletSprite = firedBullet.GetComponentInChildren<SpriteRenderer>().transform;
-        bulletSprite.localPosition = firedBullet.transform.InverseTransformPoint(gunBarrel.position);
+
         bullet.InitializeBullet(direction);
+    }
+
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawSphere(GunPointer, 0.2f);
     }
 }
