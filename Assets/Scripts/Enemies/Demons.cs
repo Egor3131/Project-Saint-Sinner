@@ -10,7 +10,4 @@ public abstract class Demons : MonoBehaviour
     public abstract DemonType EnemyType { get; }
     public abstract string PrefabPath { get; }
 
-
-
-
 }

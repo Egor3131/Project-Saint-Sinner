@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
-public class Bullet : MonoBehaviour
+public abstract class Bullet : MonoBehaviour
 {
-    [SerializeField] float speed = 5;
+    [HideInInspector] public float damage;
+    public float speed = 5;
     private Rigidbody rb;
 
 
@@ -13,7 +15,7 @@ public class Bullet : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    public void InitializeBullet(Vector3 direction)
+    public void SetDirection(Vector3 direction)
     {
         rb.velocity = direction * speed;
     }
@@ -23,11 +25,11 @@ public class Bullet : MonoBehaviour
     {
         if (other.CompareTag("Wall") || other.CompareTag("Enemy"))
         {
-            Destroy(gameObject);
+            ObjectPooling.instance.bulletPool.Release(this);
         }
         if (other.TryGetComponent<HealthController>(out HealthController health))
         {
-            health.ReduceHealth(10);
+            health.ReduceHealth(damage);
         }
 
     }

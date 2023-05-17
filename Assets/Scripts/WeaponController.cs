@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class WeaponController : MonoBehaviour
 {
-    [SerializeField] public Transform gunBarrel;
-    [SerializeField] GameObject bulletPrefab;
+    public Transform gunBarrel;
     public Vector3 GunPointer { get; set; }
-    public Vector3 ObjectScale { get; set; }
     private SpriteRenderer weaponRenderer;
     public Vector3 direction;
     float angle;
@@ -23,8 +22,6 @@ public class WeaponController : MonoBehaviour
     {
         SetSortingLayer();
         CalculateAngle();
-        Debug.Log(GunPointer);
-
     }
 
 
@@ -67,23 +64,6 @@ public class WeaponController : MonoBehaviour
     }
 
 
-
-
-
-    private void OnFire()
-    {
-        FireBullet();
-        Debug.Log("Shooting");
-    }
-
-
-    private void FireBullet()
-    {
-        GameObject firedBullet = Instantiate(bulletPrefab, new Vector3(gunBarrel.position.x, gunBarrel.position.y, gunBarrel.position.z), bulletPrefab.transform.rotation);
-        Bullet bullet = firedBullet.GetComponent<Bullet>();
-
-        bullet.InitializeBullet(direction);
-    }
 
 
     private void OnDrawGizmos()

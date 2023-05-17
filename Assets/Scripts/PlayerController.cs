@@ -94,13 +94,16 @@ public class PlayerController : MonoBehaviour
     }
 
 
+
+    //Find out why I need to add 1 on z axis
+
     private void RotateGun()
     {
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit rayHit, float.MaxValue, layer))
         {
-            weaponController.GunPointer = new Vector3(rayHit.point.x, weaponController.gunBarrel.position.y, rayHit.point.z);
+            weaponController.GunPointer = new Vector3(rayHit.point.x, weaponController.gunBarrel.position.y, rayHit.point.z - 1);
         }
     }
 

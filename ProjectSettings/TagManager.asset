@@ -6,11 +6,12 @@ TagManager:
   tags:
   - Wall
   - Enemy
+  - Gun
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 
@@ -40,6 +41,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Ground
+    uniqueID: 909029359
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
