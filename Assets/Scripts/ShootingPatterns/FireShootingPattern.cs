@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class FireShootingPattern : IShoot
+[CreateAssetMenu(menuName = "FireShootingPattern", fileName = "ShootingPattern")]
+public class FireShootingPattern : ShootingPatterns
 {
-    public void Shoot(IObjectPool<Bullet> bulletPool, Transform gunBarrel, Vector3 direction)
+    public override void Shoot(IObjectPool<Bullet> bulletPool, Transform gunBarrel, Vector3 direction)
     {
         Bullet bullet = bulletPool.Get();
         bullet.transform.position = gunBarrel.position;

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7379717177561596650}
   - component: {fileID: 3044761159704844713}
-  - component: {fileID: 9140514880446134574}
+  - component: {fileID: 4937652595102947690}
   - component: {fileID: 8882179036234766091}
   m_Layer: 0
   m_Name: FireGun (1)
@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!212 &3044761159704844713
 SpriteRenderer:
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &9140514880446134574
+--- !u!114 &4937652595102947690
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,15 +95,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4244950399243353233}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c24ed2b0ba085547ba986557855ebd2, type: 3}
+  m_Script: {fileID: 11500000, guid: 5a84540dbf2fa454b8f2a8e5c5db0494, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 8091347517664078359, guid: b969f2e3e6eb8a14f9472d860baa7f85, type: 3}
-  gunSprite: {fileID: 21300000, guid: b403f27d444f7ab4b936ba1679a1d394, type: 3}
-  gunName: 
-  damage: 0
-  fireRate: 0
-  spread: 0
+  weaponsStats: {fileID: 11400000, guid: eca9dfdca512c974e8bb4afc7490048f, type: 2}
+  weaponController: {fileID: 0}
 --- !u!65 &8882179036234766091
 BoxCollider:
   m_ObjectHideFlags: 0

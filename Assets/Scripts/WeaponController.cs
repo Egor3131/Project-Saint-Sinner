@@ -5,16 +5,19 @@ using UnityEngine.Pool;
 
 public class WeaponController : MonoBehaviour
 {
+    [SerializeField] SpriteRenderer characterRenderer;
     public Transform gunBarrel;
     public Vector3 GunPointer { get; set; }
-    private SpriteRenderer weaponRenderer;
     public Vector3 direction;
-    float angle;
+    private SpriteRenderer weaponRenderer;
+    private float angle;
+
 
 
     private void Awake()
     {
         weaponRenderer = GetComponentInChildren<SpriteRenderer>();
+        characterRenderer = GetComponent<SpriteRenderer>();
     }
 
 
@@ -47,12 +50,16 @@ public class WeaponController : MonoBehaviour
     }
 
 
-    public void GunController(GameObject obj)
+
+
+
+    public void GunController(Transform obj)
     {
         if (direction.x > 0.2f)
         {
             transform.localScale = new Vector3(1, 1, 1);
             obj.transform.localScale = new Vector3(1, 1.41f, 1);
+
 
         }
 
@@ -60,6 +67,7 @@ public class WeaponController : MonoBehaviour
         {
             transform.localScale = new Vector3(-1, -1, 1);
             obj.transform.localScale = new Vector3(-1, 1.41f, 1);
+
         }
     }
 

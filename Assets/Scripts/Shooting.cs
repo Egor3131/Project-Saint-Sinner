@@ -6,22 +6,20 @@ public class Shooting : MonoBehaviour
 {
     [SerializeField] SpriteRenderer gunHolder;
     private Weapons currentWeapon;
+    private WeaponsStatsSO currentWeaponStats;
 
-    private void Awake()
-    {
-        currentWeapon = new MoreDamageGun();
-    }
+
 
     private void OnFire()
     {
         currentWeapon.Fire();
     }
 
-    private void InitializeWeapon(Weapons weapon)
+    private void InitializeWeapon(WeaponsStatsSO weaponStats)
     {
-        currentWeapon = weapon;
-        gunHolder.sprite = currentWeapon.gunSprite;
-        ObjectPooling.instance.bulletPrefab = currentWeapon.bullet.gameObject;
+        currentWeaponStats = weaponStats;
+        gunHolder.sprite = currentWeaponStats.gunSprite;
+        ObjectPooling.instance.bulletPrefab = currentWeaponStats.bullet.gameObject;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -29,7 +27,8 @@ public class Shooting : MonoBehaviour
         if (other.CompareTag("Gun"))
         {
             Weapons weapon = other.GetComponent<Weapons>();
-            InitializeWeapon(weapon);
+            currentWeapon = weapon;
+            InitializeWeapon(weapon.weaponsStats);
         }
     }
 }

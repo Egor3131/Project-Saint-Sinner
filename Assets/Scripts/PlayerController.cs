@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Camera currentCamera;
     [SerializeField] float speed = 5f;
     [SerializeField] LayerMask layer;
+    private SpriteRenderer playerSpriteRenderer;
     private Vector3 mousePos;
     public Vector2 rawInput;
     private Rigidbody rb;
@@ -38,7 +39,7 @@ public class PlayerController : MonoBehaviour
     {
         ChangeStates();
         RotateGun();
-        weaponController.GunController(gameObject);
+        weaponController.GunController(transform);
 
 
         switch (currentPlayerState)
@@ -62,6 +63,7 @@ public class PlayerController : MonoBehaviour
 
         Movement();
     }
+
 
 
     private void OnMovement(InputValue value)
