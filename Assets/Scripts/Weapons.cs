@@ -12,7 +12,7 @@ public class Weapons : MonoBehaviour
 
     public void Fire()
     {
-        weaponsStats.shootPattern.Shoot(ObjectPooling.instance.bulletPool, weaponController.gunBarrel, weaponController.direction);
+        weaponsStats.shootPattern.Shoot(ObjectPooling.instance.activeBulletPool, weaponController.gunBarrel, weaponController.direction);
         weaponsStats.bullet.damage = weaponsStats.damage;
         Debug.Log(weaponsStats.bullet.damage);
     }

@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!212 &764401177631502770
 SpriteRenderer:
@@ -107,8 +107,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.62966174}
-  m_Center: {x: 0, y: -9.931887e-16, z: -0.214831}
+  m_Size: {x: 0.7647432, y: 0.82274234, z: 0.62966174}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &8811039147480327233
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -118,7 +118,7 @@ Rigidbody:
   m_GameObject: {fileID: 2589048620969462049}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 1.04
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}

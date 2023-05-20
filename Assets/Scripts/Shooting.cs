@@ -20,6 +20,8 @@ public class Shooting : MonoBehaviour
         currentWeaponStats = weaponStats;
         gunHolder.sprite = currentWeaponStats.gunSprite;
         ObjectPooling.instance.bulletPrefab = currentWeaponStats.bullet.gameObject;
+        ObjectPooling.instance.AddBulletPrefab(currentWeaponStats.bullet.gameObject);
+        ObjectPooling.instance.GetBulletPool();
     }
 
     private void OnTriggerEnter(Collider other)

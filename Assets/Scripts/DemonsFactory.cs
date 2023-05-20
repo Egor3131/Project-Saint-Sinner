@@ -13,22 +13,26 @@ public enum DemonType
 
 public class DemonsFactory : MonoBehaviour
 {
+    private bool isInitialized;
     public Dictionary<DemonType, string> demons;
 
 
     private void InitializeFactory()
     {
-
-        demons = new Dictionary<DemonType, string>();
-
-        var neededAbilityTypes = Assembly.GetAssembly(typeof(Demons)).GetTypes()
-        .Where(demonType => demonType.IsClass && !demonType.IsAbstract && demonType.IsSubclassOf(typeof(Demons)));
-
-
-        foreach (var type in neededAbilityTypes)
+        if (!isInitialized)
         {
-            var demon = Activator.CreateInstance(type) as Demons;
-            demons.Add(demon.EnemyType, demon.PrefabPath);
+            demons = new Dictionary<DemonType, string>();
+
+            var neededAbilityTypes = Assembly.GetAssembly(typeof(Demons)).GetTypes()
+            .Where(demonType => demonType.IsClass && !demonType.IsAbstract && demonType.IsSubclassOf(typeof(Demons)));
+
+
+            foreach (var type in neededAbilityTypes)
+            {
+                var demon = Activator.CreateInstance(type) as Demons;
+                demons.Add(demon.EnemyType, demon.PrefabPath);
+            }
+            isInitialized = true;
         }
     }
 

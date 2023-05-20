@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40bbd30eaed62c94f9500977ccbd292d, type: 3}
   m_Name: FireGun
   m_EditorClassIdentifier: 
-  gunName: 
-  damage: 0
-  fireRate: 0
-  spread: 0
+  gunName: FIre Gun
+  damage: 100
+  fireRate: 20
+  spread: 123
+  shootPattern: {fileID: 11400000, guid: e4921610ad306294b90fd64443446984, type: 2}
+  bullet: {fileID: 5663485703522417573, guid: 317accdbe5e3c464d98adbeada8986b4, type: 3}
+  gunSprite: {fileID: 21300000, guid: b403f27d444f7ab4b936ba1679a1d394, type: 3}

@@ -5228,7 +5228,7 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4248550837174527930, guid: b8b8990218fb1e64c90ba2d80a736966, type: 3}
+    - target: {fileID: 2225156173879702305, guid: b8b8990218fb1e64c90ba2d80a736966, type: 3}
       propertyPath: weaponController
       value: 
       objectReference: {fileID: 188466486}
@@ -5297,6 +5297,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MoreDamageGun
       objectReference: {fileID: 0}
+    - target: {fileID: 4937652595102947690, guid: 6e383a450b1e7054ebaf5d86b76cb4fc, type: 3}
+      propertyPath: weaponController
+      value: 
+      objectReference: {fileID: 188466486}
     - target: {fileID: 7379717177561596650, guid: 6e383a450b1e7054ebaf5d86b76cb4fc, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -5341,10 +5345,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9140514880446134574, guid: 6e383a450b1e7054ebaf5d86b76cb4fc, type: 3}
-      propertyPath: weaponController
-      value: 
-      objectReference: {fileID: 188466486}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

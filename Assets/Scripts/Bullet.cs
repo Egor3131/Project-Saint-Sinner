@@ -6,6 +6,7 @@ using UnityEngine.Pool;
 public abstract class Bullet : MonoBehaviour
 {
     [HideInInspector] public float damage;
+    public string bulletTag;
     public float speed = 5;
     private Rigidbody rb;
 
@@ -21,11 +22,13 @@ public abstract class Bullet : MonoBehaviour
     }
 
 
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Wall") || other.CompareTag("Enemy"))
         {
-            ObjectPooling.instance.bulletPool.Release(this);
+            ObjectPooling.instance.activeBulletPool.Release(this);
         }
         if (other.TryGetComponent<HealthController>(out HealthController health))
         {
@@ -33,4 +36,5 @@ public abstract class Bullet : MonoBehaviour
         }
 
     }
+
 }

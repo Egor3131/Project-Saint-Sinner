@@ -6,25 +6,45 @@ using UnityEngine.Pool;
 public class ObjectPooling : MonoBehaviour
 {
     public GameObject bulletPrefab;
-    public ObjectPool<Bullet> bulletPool;
+    public Dictionary<GameObject, ObjectPool<Bullet>> bulletPoolsDictionary;
+    public HashSet<GameObject> bulletPrefabs;
+    public ObjectPool<Bullet> activeBulletPool;
 
     public static ObjectPooling instance;
 
 
     private void Awake()
     {
-        bulletPool = new ObjectPool<Bullet>(OnCreateBullet, OnGetBullet, OnReleaseBullet);
+        bulletPoolsDictionary = new Dictionary<GameObject, ObjectPool<Bullet>>();
+        bulletPrefabs = new HashSet<GameObject>();
         if (instance != null)
         {
             Destroy(gameObject);
             return;
         }
-        else
+        instance = this;
+    }
+
+
+
+
+    public void AddBulletPrefab(GameObject bulletToAdd)
+    {
+        if (bulletPrefabs.Add(bulletToAdd))
         {
-            instance = this;
+            ObjectPool<Bullet> newBulletPool = new ObjectPool<Bullet>(OnCreateBullet, OnGetBullet, OnReleaseBullet);
+            bulletPoolsDictionary.Add(bulletPrefab, newBulletPool);
+            activeBulletPool = bulletPoolsDictionary[bulletPrefab];
         }
     }
 
+    public void GetBulletPool()
+    {
+        if (bulletPoolsDictionary.ContainsKey(bulletPrefab))
+        {
+            activeBulletPool = bulletPoolsDictionary[bulletPrefab];
+        }
+    }
 
 
     private Bullet OnCreateBullet()
